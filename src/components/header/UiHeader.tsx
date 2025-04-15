@@ -12,7 +12,7 @@ import { movieApi } from '../../api/movieApi';
 import styles from './styles';
 import { Color } from '../../theme/colors';
 
-const Header = () => {
+const UiHeader = () => {
   const dispatch = useAppDispatch();
 
   const { t } = useTranslation();
@@ -52,4 +52,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default UiHeader;

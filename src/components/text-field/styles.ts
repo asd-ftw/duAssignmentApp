@@ -1,4 +1,4 @@
-import { isRTL } from '../../utils/layout';
+import { isRTL } from '../../utils/commonUtils';
 import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({

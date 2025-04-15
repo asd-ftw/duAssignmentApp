@@ -8,6 +8,10 @@ const styles = ScaledSheet.create({
     backgroundColor: '#f5f5f5',
     justifyContent: 'center',
   },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
   heading: {
     fontSize: '30@ms',
     fontWeight: 'bold',

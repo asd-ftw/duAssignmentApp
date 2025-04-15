@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useGetPopularMoviesQuery, Movie } from '../../api/movieApi';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from './styles';
-import Header from '../../components/header/Header';
+import UiHeader from '../../components/header/UiHeader';
 import MovieCard from '../../components/movie-card/MovieCard';
 
 const MovieScreen = () => {
@@ -48,7 +48,7 @@ const MovieScreen = () => {
     console.error('Error fetching movies:', error);
     return (
       <SafeAreaView style={styles.container}>
-        <Header />
+        <UiHeader />
         <View style={styles.centered}>
           <Text variant="headlineSmall">{t('fetchFailed')}</Text>
         </View>
@@ -58,7 +58,7 @@ const MovieScreen = () => {
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom', 'left', 'right']}>
-      <Header />
+      <UiHeader />
       {isLoading && page === 1 && (
         <View style={styles.centered}>
           <ActivityIndicator animating={true} size="large" />
