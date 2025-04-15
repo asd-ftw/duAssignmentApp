@@ -14,5 +14,6 @@
   "logoutConfirmMessage": "Are you sure you want to logout?",
   "cancel": "Cancel",
   "confirm": "Confirm",
-  "fetchFailed": "Failed to fetch data"
+  "fetchFailed": "Failed to fetch data",
+  "noMoviesFound": "No movies found"
 }

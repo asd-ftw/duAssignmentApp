@@ -14,5 +14,6 @@
   "logoutConfirmMessage": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "cancel": "إلغاء",
   "confirm": "تأكيد",
-  "fetchFailed": "فشل في جلب البيانات"
+  "fetchFailed": "فشل في جلب البيانات",
+  "noMoviesFound": "لم يتم العثور على أفلام"
 }
