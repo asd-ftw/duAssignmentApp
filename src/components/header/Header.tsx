@@ -1,30 +1,28 @@
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
-import {Alert, StatusBar} from 'react-native';
-import {Appbar, useTheme} from 'react-native-paper';
-import {RootStackParamList} from '../../navigation/AppNavigator';
-import {useAppDispatch} from '../../redux/redux.hook';
-import {useTranslation} from 'react-i18next';
-import {logout} from '../../redux/slices/auth/authSlice';
-import {persistor} from '../../redux/store';
-import {movieApi} from '../../api/movieApi';
+import { Alert, StatusBar } from 'react-native';
+import { Appbar, useTheme } from 'react-native-paper';
+import { RootStackParamList } from '../../navigation/AppNavigator';
+import { useAppDispatch } from '../../redux/redux.hook';
+import { useTranslation } from 'react-i18next';
+import { logout } from '../../redux/slices/auth/authSlice';
+import { persistor } from '../../redux/store';
+import { movieApi } from '../../api/movieApi';
 import styles from './styles';
-import {Color} from '../../theme/colors';
+import { Color } from '../../theme/colors';
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   const dispatch = useAppDispatch();
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const theme = useTheme();
 
   const handleLogout = () => {
     Alert.alert(t('logoutConfirmTitle'), t('logoutConfirmMessage'), [
-      {text: t('cancel'), style: 'cancel'},
+      { text: t('cancel'), style: 'cancel' },
       {
         text: t('confirm'),
         style: 'destructive',
@@ -39,7 +37,7 @@ const Header = (props: Props) => {
   };
 
   return (
-    <Appbar.Header style={{backgroundColor: theme.colors.primary}}>
+    <Appbar.Header style={{ backgroundColor: theme.colors.primary }}>
       <StatusBar
         barStyle="light-content"
         backgroundColor={theme.colors.primary}

@@ -1,13 +1,13 @@
 import i18n from 'i18next';
-import {initReactI18next} from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 import * as RNLocalize from 'react-native-localize';
 
 import en from './locales/en.json';
 import ar from './locales/ar.json';
 
 const resources = {
-  en: {translation: en},
-  ar: {translation: ar},
+  en: { translation: en },
+  ar: { translation: ar },
 };
 
 const fallbackLng = 'en';

@@ -1,6 +1,6 @@
-import type {PayloadAction} from '@reduxjs/toolkit';
-import {createSlice} from '@reduxjs/toolkit';
-import {LanguageCodes} from '../../../utils/constants';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { LanguageCodes } from '../../../utils/constants';
 
 export interface LanguageState {
   selectedLanguage: string;
@@ -20,6 +20,6 @@ export const languageSlice = createSlice({
   },
 });
 
-export const {changeLanguage} = languageSlice.actions;
+export const { changeLanguage } = languageSlice.actions;
 
 export default languageSlice.reducer;

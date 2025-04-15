@@ -1,7 +1,8 @@
-import {useTranslation} from 'react-i18next';
-import {HelperText, TextInput} from 'react-native-paper';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { HelperText, TextInput } from 'react-native-paper';
 import styles from './styles';
-import {TextFieldProps} from './types';
+import { TextFieldProps } from './types';
 
 const TextField: React.FC<TextFieldProps> = ({
   formik,
@@ -11,7 +12,7 @@ const TextField: React.FC<TextFieldProps> = ({
   keyboardType,
   ...rest
 }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <TextInput

@@ -7,11 +7,12 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import AppNavigator from './src/navigation/AppNavigator';
 import { persistor, store } from './src/redux/store';
-import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';
-
+import {
+  PaperProvider,
+  MD3LightTheme as DefaultTheme,
+} from 'react-native-paper';
 
 function App(): React.JSX.Element {
-
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -29,12 +30,11 @@ function App(): React.JSX.Element {
 
   return (
     <PaperProvider theme={DefaultTheme}>
-
-    <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <AppNavigator />
-    </PersistGate>
-  </Provider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppNavigator />
+        </PersistGate>
+      </Provider>
     </PaperProvider>
   );
 }

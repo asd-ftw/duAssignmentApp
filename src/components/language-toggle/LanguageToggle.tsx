@@ -1,11 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Text, ToggleButton} from 'react-native-paper';
-import {useTranslation} from 'react-i18next';
+import { View } from 'react-native';
+import { Text, ToggleButton } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
 
 const LanguageToggle = () => {
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = async (lang: 'en' | 'ar') => {
     if (i18n.language !== lang) {

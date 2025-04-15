@@ -1,5 +1,5 @@
-import {isRTL} from '../../utils/layout';
-import {ScaledSheet} from 'react-native-size-matters';
+import { isRTL } from '../../utils/layout';
+import { ScaledSheet } from 'react-native-size-matters';
 
 const styles = ScaledSheet.create({
   input: {

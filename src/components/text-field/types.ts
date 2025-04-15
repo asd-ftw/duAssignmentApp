@@ -1,5 +1,5 @@
-import {TextInputProps as PaperTextInputProps} from 'react-native-paper';
-import {FormikProps} from 'formik';
+import { TextInputProps as PaperTextInputProps } from 'react-native-paper';
+import { FormikProps } from 'formik';
 
 interface FormValues {
   email: string;

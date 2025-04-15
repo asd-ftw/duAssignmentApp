@@ -1,4 +1,4 @@
-import {combineReducers} from '@reduxjs/toolkit';
+import { combineReducers } from '@reduxjs/toolkit';
 import authReducer from './slices/auth/authSlice';
 import languageReducer from './slices/language/languageSlice';
 

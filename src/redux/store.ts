@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -11,8 +11,8 @@ import {
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import rootReducer from './rootReducer';
-import {movieApi} from '../api/movieApi';
-import type {RootState as AppRootState} from './rootReducer';
+import { movieApi } from '../api/movieApi';
+import type { RootState as AppRootState } from './rootReducer';
 
 const persistConfig = {
   key: 'root',

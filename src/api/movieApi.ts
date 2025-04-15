@@ -1,5 +1,5 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {API_KEY, BASE_URL} from '../utils/constants';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_KEY, BASE_URL } from '../utils/constants';
 
 interface MovieListResponse {
   page: number;
@@ -16,13 +16,13 @@ export interface Movie {
 
 export const movieApi = createApi({
   reducerPath: 'movieApi',
-  baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: builder => ({
-    getPopularMovies: builder.query<MovieListResponse, {page: number}>({
-      query: ({page = 1}) =>
+    getPopularMovies: builder.query<MovieListResponse, { page: number }>({
+      query: ({ page = 1 }) =>
         `movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`,
       // Automatically merge results when page changes
-      serializeQueryArgs: ({endpointName}) => {
+      serializeQueryArgs: ({ endpointName }) => {
         return endpointName; // Only one cache entry for 'getPopularMovies'
       },
       merge: (currentCache, newItems) => {
@@ -36,7 +36,7 @@ export const movieApi = createApi({
         currentCache.total_results = newItems.total_results;
       },
       // Refetch if the network status changes or the app regains focus
-      forceRefetch({currentArg, previousArg}) {
+      forceRefetch({ currentArg, previousArg }) {
         return currentArg?.page !== previousArg?.page;
       },
     }),
@@ -45,4 +45,4 @@ export const movieApi = createApi({
 });
 
 // Export hooks for usage in functional components
-export const {useGetPopularMoviesQuery} = movieApi;
+export const { useGetPopularMoviesQuery } = movieApi;
