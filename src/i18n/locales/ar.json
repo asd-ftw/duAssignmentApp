@@ -1,0 +1,18 @@
+{
+  "login": "تسجيل الدخول",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "submit": "إرسال",
+  "changeLanguage": "تغيير اللغة",
+  "invalidEmail": "عنوان البريد الإلكتروني غير صالح",
+  "emailRequired": "البريد الإلكتروني مطلوب",
+  "passwordRequired": "كلمة المرور مطلوبة",
+  "passwordInvalid": "يجب أن تتكون كلمة المرور من 8-15 حرفًا، مع حرف كبير واحد ورمز خاص واحد",
+  "popularMovies": "أفلام مشهورة",
+  "logout": "تسجيل الخروج",
+  "logoutConfirmTitle": "تأكيد تسجيل الخروج",
+  "logoutConfirmMessage": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "cancel": "إلغاء",
+  "confirm": "تأكيد",
+  "fetchFailed": "فشل في جلب البيانات"
+}

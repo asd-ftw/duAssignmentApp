@@ -1,0 +1,18 @@
+{
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "submit": "Submit",
+  "changeLanguage": "Change Language",
+  "invalidEmail": "Invalid email address",
+  "emailRequired": "Email is required",
+  "passwordRequired": "Password is required",
+  "passwordInvalid": "Password must be 8-15 characters, with one uppercase letter and one special character",
+  "popularMovies": "Popular Movies",
+  "logout": "Logout",
+  "logoutConfirmTitle": "Confirm Logout",
+  "logoutConfirmMessage": "Are you sure you want to logout?",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "fetchFailed": "Failed to fetch data"
+}
