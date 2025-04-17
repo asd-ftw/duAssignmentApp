@@ -7,7 +7,15 @@ import { TextInput as RNInput } from 'react-native';
 
 const TextField = React.forwardRef<RNInput, TextFieldProps>(
   (
-    { formik, name, label, secureTextEntry = false, keyboardType, ...rest },
+    {
+      formik,
+      name,
+      label,
+      secureTextEntry = false,
+      keyboardType,
+      onSubmitEditing,
+      ...rest
+    },
     ref,
   ) => {
     const { t } = useTranslation();
@@ -23,10 +31,14 @@ const TextField = React.forwardRef<RNInput, TextFieldProps>(
           onBlur={formik.handleBlur(name)}
           mode="outlined"
           autoCapitalize="none"
+          spellCheck={false}
+          autoCorrect={false}
           secureTextEntry={secureTextEntry}
           keyboardType={keyboardType}
           style={styles.input}
           error={Boolean(error)}
+          maxLength={40}
+          onSubmitEditing={onSubmitEditing}
           {...rest}
         />
         <HelperText type="error" visible={Boolean(error)}>

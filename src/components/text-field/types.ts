@@ -15,6 +15,7 @@ type CustomTextFieldProps = Omit<
   | 'label'
   | 'secureTextEntry'
   | 'keyboardType'
+  | 'onSubmitEditing'
 >;
 
 export interface TextFieldProps extends CustomTextFieldProps {
@@ -23,4 +24,5 @@ export interface TextFieldProps extends CustomTextFieldProps {
   label: string;
   secureTextEntry?: boolean;
   keyboardType?: PaperTextInputProps['keyboardType'];
+  onSubmitEditing?: () => void;
 }

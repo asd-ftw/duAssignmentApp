@@ -14,12 +14,12 @@ export const languageSlice = createSlice({
   name: 'language',
   initialState,
   reducers: {
-    changeLanguage: (state, action: PayloadAction<string>) => {
+    changeAppLanguage: (state, action: PayloadAction<string>) => {
       state.selectedLanguage = action.payload;
     },
   },
 });
 
-export const { changeLanguage } = languageSlice.actions;
+export const { changeAppLanguage } = languageSlice.actions;
 
 export default languageSlice.reducer;

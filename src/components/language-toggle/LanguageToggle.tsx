@@ -3,13 +3,21 @@ import { View } from 'react-native';
 import { Text, ToggleButton } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import styles from './styles';
+import { useDispatch } from 'react-redux';
+import { changeAppLanguage } from '../../redux/slices/language/languageSlice';
 
 const LanguageToggle = () => {
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
 
-  const changeLanguage = async (lang: 'en' | 'ar') => {
-    if (i18n.language !== lang) {
-      await i18n.changeLanguage(lang);
+  const handleLanguageChange = async (lang: 'en' | 'ar') => {
+    if (i18n.language !== lang && lang) {
+      try {
+        dispatch(changeAppLanguage(lang));
+        await i18n.changeLanguage(lang);
+      } catch (error) {
+        console.error('Error changing language:', error);
+      }
     }
   };
 
@@ -17,9 +25,11 @@ const LanguageToggle = () => {
     <View style={styles.container}>
       <Text variant="labelLarge">{t('changeLanguage')}:</Text>
       <ToggleButton.Row
-        onValueChange={(val: string) =>
-          val && changeLanguage(val as 'en' | 'ar')
-        }
+        onValueChange={(val: string) => {
+          if (val) {
+            handleLanguageChange(val as 'en' | 'ar');
+          }
+        }}
         value={i18n.language}
         style={styles.toggleContainer}>
         <ToggleButton icon="alpha-e" value="en" />

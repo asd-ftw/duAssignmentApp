@@ -17,7 +17,7 @@ import type { RootState as AppRootState } from './rootReducer';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'language'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

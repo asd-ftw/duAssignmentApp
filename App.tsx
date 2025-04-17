@@ -1,42 +1,96 @@
-import React, { useEffect } from 'react';
-import { I18nManager } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, I18nManager, StyleSheet, View } from 'react-native';
 import RNRestart from 'react-native-restart';
 import './src/i18n';
 import { useTranslation } from 'react-i18next';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import AppNavigator from './src/navigation/AppNavigator';
-import { persistor, store } from './src/redux/store';
+import { persistor, RootState, store } from './src/redux/store';
 import {
   PaperProvider,
   MD3LightTheme as DefaultTheme,
 } from 'react-native-paper';
 
-function App(): React.JSX.Element {
+const LanguageInitializer = ({
+  onInitialized,
+}: {
+  onInitialized: () => void;
+}) => {
   const { i18n } = useTranslation();
+  const persistedLanguage = useSelector(
+    (state: RootState) => state.persisted.language.selectedLanguage,
+  );
 
   useEffect(() => {
-    const isArabic = i18n.language === 'ar';
-    const currentlyRTL = I18nManager.isRTL;
+    let languageSyncedThisCycle = false;
+    let restartNeeded = false;
 
-    // console.log(`Language: ${i18n.language}, Is Arabic: ${isArabic}, Currently RTL: ${currentlyRTL}`);
-
-    if (isArabic !== currentlyRTL) {
-      // console.log(`RTL mismatch detected. Forcing RTL to ${isArabic} and restarting.`);
-      I18nManager.forceRTL(isArabic);
-      RNRestart.Restart();
+    if (persistedLanguage && i18n.language !== persistedLanguage) {
+      i18n.changeLanguage(persistedLanguage);
+      languageSyncedThisCycle = true;
     }
-  }, [i18n.language]);
+
+    const currentActiveLanguage = languageSyncedThisCycle
+      ? persistedLanguage
+      : i18n.language;
+
+    const shouldBeRTL = currentActiveLanguage === 'ar';
+    const currentlyIsRTL = I18nManager.isRTL;
+
+    if (shouldBeRTL !== currentlyIsRTL) {
+      I18nManager.forceRTL(shouldBeRTL);
+      restartNeeded = true;
+    }
+
+    if (!restartNeeded) {
+      onInitialized();
+    } else {
+      setTimeout(() => {
+        RNRestart.Restart();
+      }, 50);
+    }
+  }, [persistedLanguage, i18n, onInitialized]);
+
+  return null;
+};
+
+function App(): React.JSX.Element {
+  const [isInitialized, setIsInitialized] = useState(false);
 
   return (
     <PaperProvider theme={DefaultTheme}>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <AppNavigator />
+        <PersistGate
+          loading={
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" />
+            </View>
+          }
+          persistor={persistor}>
+          {!isInitialized ? (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" />
+              <LanguageInitializer
+                onInitialized={() => setIsInitialized(true)}
+              />
+            </View>
+          ) : (
+            <AppNavigator />
+          )}
         </PersistGate>
       </Provider>
     </PaperProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+  },
+});
 
 export default App;
