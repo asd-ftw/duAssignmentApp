@@ -3,8 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../screens/login/LoginScreen';
 import MovieScreen from '../screens/movie/MovieScreen';
-import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
+import { useAppSelector } from '../redux/redux.hook';
 
 export type RootStackParamList = {
   LoginScreen: undefined;
@@ -14,7 +14,7 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
-  const { email, password } = useSelector(
+  const { email, password } = useAppSelector(
     (state: RootState) => state.persisted.auth,
   );
   const isLoggedIn = !!(email && password);

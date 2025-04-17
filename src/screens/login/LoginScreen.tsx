@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { loginSchema } from '../../utils/validationSchema';
-import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../redux/slices/auth/authSlice';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -14,10 +13,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import TextField from '../../components/text-field/TextField';
 import UiKeyboardAvoiding from '../../components/keyboard-avoiding/UiKeyboardAvoiding';
 import { ScrollView, TextInput as RNInput } from 'react-native';
+import { useAppDispatch } from '../../redux/redux.hook';
 
 const LoginScreen = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const passwordRef = React.useRef<RNInput>(null);

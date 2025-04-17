@@ -3,7 +3,7 @@ import { ActivityIndicator, I18nManager, StyleSheet, View } from 'react-native';
 import RNRestart from 'react-native-restart';
 import './src/i18n';
 import { useTranslation } from 'react-i18next';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import AppNavigator from './src/navigation/AppNavigator';
 import { persistor, RootState, store } from './src/redux/store';
@@ -11,6 +11,7 @@ import {
   PaperProvider,
   MD3LightTheme as DefaultTheme,
 } from 'react-native-paper';
+import { useAppSelector } from './src/redux/redux.hook';
 
 const LanguageInitializer = ({
   onInitialized,
@@ -18,7 +19,7 @@ const LanguageInitializer = ({
   onInitialized: () => void;
 }) => {
   const { i18n } = useTranslation();
-  const persistedLanguage = useSelector(
+  const persistedLanguage = useAppSelector(
     (state: RootState) => state.persisted.language.selectedLanguage,
   );
 

@@ -3,12 +3,12 @@ import { View } from 'react-native';
 import { Text, ToggleButton } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import styles from './styles';
-import { useDispatch } from 'react-redux';
 import { changeAppLanguage } from '../../redux/slices/language/languageSlice';
+import { useAppDispatch } from '../../redux/redux.hook';
 
 const LanguageToggle = () => {
   const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleLanguageChange = async (lang: 'en' | 'ar') => {
     if (i18n.language !== lang && lang) {
